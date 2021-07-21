@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  height: 5vh;
+}
+
+.attribution a {
+  color: #3e52a3;
+}
+
+header {
+  height: 30vh;
+  background-image: url("images/pattern-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Rubik', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  padding-top: 30px;
+}
+
+form {
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+.text-input {
+  width: 40%;
+  outline: none;
+  padding: 20px;
+  border: none;
+  border-radius: 15px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #969696;
+}
+
+button {
+  position: absolute;
+  background-color: #2b2b2b;
+  border-radius: 0 15px 15px 0;
+  padding: 23px 25px;
+  border: none;
+  cursor: pointer;
+  -webkit-transform: translatex(-100%);
+          transform: translatex(-100%);
+}
+
+.detail-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 25px;
+  background-color: white;
+  -webkit-box-shadow: 0 5px 5px #c8c8c8;
+          box-shadow: 0 5px 5px #c8c8c8;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 2;
+}
+
+.detail {
+  border-right: 1px solid #969696;
+  padding-left: 30px;
+  padding-right: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.detail:last-of-type {
+  border: none;
+}
+
+.detail-title {
+  display: block;
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #969696;
+}
+
+.detail-description {
+  margin-top: 20px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2b2b2b;
+}
+
+#mapid {
+  height: 65vh;
+  z-index: 1;
+}
+/*# sourceMappingURL=styles.css.map */

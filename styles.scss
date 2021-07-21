@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+$bg-pattern: url('images/pattern-bg.png');
+$very-dark-gray: hsl(0, 0%, 17%);
+$dark-gray: hsl(0, 0%, 59%);
+
+@mixin mainFont($weight, $size) {
+    font-family: 'Rubik', sans-serif;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.attribution { 
+    font-size: 11px; 
+    text-align: center;
+    height: 5vh; 
+}
+
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}
+
+header {
+    height: 30vh;
+    background-image: $bg-pattern;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include mainFont(700, 38px);
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+}
+
+form {
+    padding-top: 20px;
+    margin: 0 auto;
+}
+
+.text-input {
+    width: 40%;
+    outline: none;
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    @include mainFont(300, 18px);
+    color: $dark-gray;
+}
+
+button {
+    position: absolute;
+    background-color: $very-dark-gray;
+    border-radius: 0 15px 15px 0;
+    padding: 23px 25px;
+    border: none;
+    cursor: pointer;
+    transform: translatex(-100%);
+}
+
+.detail-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 80%;
+    margin: 0 auto;
+
+    border-radius: 25px;
+
+    background-color: white;
+    box-shadow: 0 5px 5px rgb(200, 200, 200);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.detail {
+    border-right: 1px solid $dark-gray;
+    padding-left: 30px;
+    padding-right: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.detail:last-of-type {
+    border: none;
+}
+
+.detail-title {
+    display: block;
+    @include mainFont(700, 16px);
+    color: $dark-gray;
+}
+
+.detail-description {
+    margin-top: 20px;
+    @include mainFont(700, 28px);
+    color: $very-dark-gray;
+}
+
+#mapid {
+    height: 65vh;
+    z-index: 1;
+}

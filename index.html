@@ -9,26 +9,64 @@
   <title>Frontend Mentor | IP Address Tracker</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""
+  />
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin="">
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  IP Address Tracker
+  <header>
+    <p>IP Address Tracker</p>
 
-  Search for any IP address or domain
+    <form>
+      <input type="text" class="text-input" id="text-input" placeholder="Search for any IP address or domain">
+      <button>
+        <img src="images/icon-arrow.svg" alt="">
+      </button>
+    </form>
 
-  IP Address
-  Location
-  Timezone
-    UTC <!-- add offset value dynamically using the API -->
-  ISP
+  </header>
+
+  
+  <div class="detail-container">
+    <div class="detail">
+      <p class="detail-title">IP Address</p>
+      <p class="detail-description">192.212.174.101</p>
+    </div>
+    <div class="detail">
+      <p class="detail-title">Location</p>
+      <p class="detail-description">Brooklyn, NY 10001</p>
+    </div>
+    <div class="detail">
+      <p class="detail-title">Timezone</p>
+      <p class="detail-description">UTC -5:00</p><!-- add offset value dynamically using the API -->
+    </div>
+    <div class="detail">
+      <p class="detail-title">ISP</p>
+      <p class="detail-description">SpaceX Starlink</p>
+    </div>
+  </div>
+  
+
+  <div class="map-container">
+    <div id="mapid"></div>
+  </div>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="https://github.com/fl97" target="_blank"> Florian Lutz</a>.
   </div>
+
+  <script src="main.js"></script>
+
 </body>
 </html>
