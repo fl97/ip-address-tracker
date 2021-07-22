@@ -24,11 +24,11 @@
 </head>
 <body>
 
-  <header>
-    <p>IP Address Tracker</p>
+  <header class="header">
+    <h1 class="header__title">IP Address Tracker</h1>
 
-    <form class="search-form">
-      <input type="text" class="text-input" id="text-input" placeholder="Search for any IP address or domain">
+    <form action="#" class="search-form">
+      <input type="text" class="search-form__input" id="text-input" placeholder="Search for any IP address or domain">
       <button class="button" type="submit" name="submit">
         <img src="images/icon-arrow.svg" alt="">
       </button>
@@ -39,27 +39,25 @@
   
   <div class="detail-container">
     <div class="detail">
-      <p class="detail-title">IP Address</p>
-      <div class="detail-description" id="ip-address"></div>
+      <h5 class="detail__title">IP Address</h5>
+      <h3 class="detail__description" id="ip-address"></h3>
     </div>
     <div class="detail">
-      <p class="detail-title">Location</p>
-      <div class="detail-description" id="location"></div>
+      <h5 class="detail__title">Location</h5>
+      <h3 class="detail__description" id="location"></h3>
     </div>
     <div class="detail">
-      <p class="detail-title">Timezone</p>
-      <div class="detail-description" id="timezone"></div>
+      <h5 class="detail__title">Timezone</h5>
+      <h3 class="detail__description" id="timezone"></h3>
     </div>
     <div class="detail">
-      <p class="detail-title">ISP</p>
-      <div class="detail-description" id="isp"></div>
+      <h5 class="detail__title">ISP</h5>
+      <h3 class="detail__description" id="isp"></h3>
     </div>
   </div>
   
 
-  <div class="map-container">
-    <div id="map"></div>
-  </div>
+  <div id="map"></div>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

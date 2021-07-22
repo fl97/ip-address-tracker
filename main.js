@@ -1,4 +1,4 @@
-const inputField = document.querySelector(".text-input")
+const inputField = document.querySelector("#text-input")
 const submitBtn = document.querySelector(".button")
 const ipData = document.querySelector("#ip-address")
 const locationData = document.querySelector("#location")

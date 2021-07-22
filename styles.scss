@@ -1,19 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 
+
+// Variables
 $bg-pattern: url('images/pattern-bg.png');
 $very-dark-gray: hsl(0, 0%, 17%);
 $dark-gray: hsl(0, 0%, 59%);
 
+$mediaBreakpoints: (
+    mobile: 12.4375rem,
+    tablet: 48rem,
+    desktop-sm: 64rem
+);
+
+// Mixins
 @mixin mainFont($weight, $size) {
     font-family: 'Rubik', sans-serif;
     font-size: $size;
     font-weight: $weight;
 }
 
-* {
+@mixin media-query($size) {
+    @media (min-width: map-get($mediaBreakpoints, $size)) {
+        @content; //content is a placeholder for our styles like text-align o.e.
+    }
+}
+
+
+
+// Styling
+
+html, * {
     box-sizing: border-box;
-    padding: 0;
+}
+
+body {
+    box-sizing: inherit;
     margin: 0;
+    padding: 0;
 }
 
 .attribution { 
@@ -26,86 +49,145 @@ $dark-gray: hsl(0, 0%, 59%);
     color: hsl(228, 45%, 44%); 
 }
 
-header {
-    height: 30vh;
-    background-image: $bg-pattern;
-    background-repeat: no-repeat;
+.header {
+    padding: 2rem 0 10rem;
+    background-image: url('images/pattern-bg.png');
     background-size: cover;
-    @include mainFont(700, 38px);
-    color: white;
-    text-align: center;
-    padding-top: 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+
+    @include media-query(tablet) {
+        padding-bottom: 8rem;
+    }
+
+    @include media-query(desktop-sm) {
+        padding-bottom: 6rem;
+        background-position: center right;
+    }
+
+    &__title {
+        @include mainFont(500, 1.7rem);
+        color: white;
+        text-align: center;
+        line-height: 100%;
+        margin: 0;
+    }
 }
 
-form {
-    padding-top: 20px;
-    margin: 0 auto;
+.search-form {
+    width: Min(31.25rem, 90%);
+    margin: 1.5rem auto;
+    position: relative;
+
+    &__input {
+        @include mainFont(400, 1rem);
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: .8rem;
+        border: none;
+        outline: none;
+
+        &::placeholder {
+            color: $dark-gray;
+        }
+
+        @include media-query(desktop-sm) {
+            font-size: 1rem;
+        }
+    }
 }
 
-.text-input {
-    width: 40%;
-    outline: none;
-    padding: 20px;
-    border: none;
-    border-radius: 15px;
-    @include mainFont(300, 18px);
-    color: $dark-gray;
-}
-
-button {
+.button {
+    height: 100%;
+    width: 3.125rem;
     position: absolute;
-    background-color: $very-dark-gray;
-    border-radius: 0 15px 15px 0;
-    padding: 23px 25px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    outline: none;
     border: none;
+    border-radius: 0 .8rem .8rem 0;
     cursor: pointer;
-    transform: translatex(-100%);
+
+    &:hover {
+        background-color: $very-dark-gray;
+    }
+
+    &__icon {
+        transform: scale(.9);
+    }
 }
 
 .detail-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 80%;
-    margin: 0 auto;
-
-    border-radius: 25px;
-
+    width: Min(64rem, 90%);
     background-color: white;
-    box-shadow: 0 5px 5px rgb(200, 200, 200);
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: .8rem;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 50%);
+    z-index: 999;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    transform: translateY(-50%);
-    z-index: 2;
+    grid-gap: 1rem;
+
+    @include media-query(tablet) {
+        padding: 3rem;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        text-align: left;
+        grid-gap: 2rem;
+    }
+
+    @include media-query(desktop-sm) {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+    }
 }
 
 .detail {
-    border-right: 1px solid $dark-gray;
-    padding-left: 30px;
-    padding-right: 100px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
+    @include media-query(tablet) {
+        &:nth-child(odd) {
+            border-right: 1px solid $dark-gray;
+        }
+    }
 
-.detail:last-of-type {
-    border: none;
-}
+    @include media-query(desktop-sm) {
+        &:not(:last-child) {
+            border-right: 1px solid $dark-gray;
+        }
+    }
 
-.detail-title {
-    display: block;
-    @include mainFont(700, 16px);
-    color: $dark-gray;
-}
+    &__title {
+        @include mainFont(500, .7rem);
+        text-transform: uppercase;
+        color: $dark-gray;
+        margin: 0;
+        letter-spacing: 1px;
 
-.detail-description {
-    margin-top: 20px;
-    @include mainFont(700, 28px);
-    color: $very-dark-gray;
+        @include media-query(desktop-sm) {
+            font-size: .8rem;
+        }
+    }
+
+    &__description {
+        @include mainFont(500, 1.3rem);
+        color: $very-dark-gray;
+        margin: .5rem 0;
+
+        @include media-query(desktop-sm) {
+            width: 70%;
+            font-size: 1.5rem;
+        }
+    }
 }
 
 #map {
-    height: 65vh;
+    width: 100%;
+    height: 500px;
     z-index: 1;
 }
