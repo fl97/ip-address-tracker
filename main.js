@@ -1,20 +1,53 @@
-let mymap = L.map('mapid').setView([48.3250947, 11.7432155], 13)
+const ipAddress = document.getElementById("ip-address");
+const ipLocation = document.getElementById("location");
+const timezone = document.getElementById("timezone");
+const isp = document.getElementById("isp");
+const input = document.querySelector(".search-form");
+var map = L.map('map');
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiZmxvcmlhbi1sdXR6IiwiYSI6ImNrcmRiZzlneDFnOHIyb3F1dHNoNGJscmIifQ.h36I1otMNo0ILKulU7pMOQ'
-}).addTo(mymap);
+let lat;
+let lng;
 
-const getOwnIP = async () => {
-    const response = await fetch('https://api.ipify.org?format=json')
-    const myJSON = await response.json()
-    console.log(myJSON.ip)
+const displayMap = () => {
+    var markerIcon = L.icon({
+        iconUrl: 'images/icon-location.svg',
 
-    //Get Geolocation of IP with IP Geolocation API
-}
+        iconSize: [46, 56], // size of the icon
+        iconAnchor: [23, 55], // point of the icon which will correspond to marker's location
+    });
+    map.setView([lat, lng], 17);
 
-getOwnIP()
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: false
+    }).addTo(map);
+
+    L.marker([lat, lng], { icon: markerIcon }).addTo(map)
+
+};
+
+const displayIpInfos = (data) => {
+    ipAddress.innerText = data.ip;
+    ipLocation.innerText = `${data.location.city}, ${data.location.country} ${data.location.postalCode}`;
+    timezone.innerText = `UTC ${data.location.timezone}`;
+    console.log(data.location)
+    isp.innerText = data.isp;
+};
+
+const getIpInfos = (ipAddress = "") => {
+    fetch(`https://geo.ipify.org/api/v1?apiKey=at_1UOKYLUYX6wX01ZGYWP76R8ncaxAh&ipAddress=${ipAddress}`)
+        .then(response => response.json())
+        .then(data => {
+            lat = data.location.lat;
+            lng = data.location.lng;
+            displayIpInfos(data);
+            displayMap();
+        })
+};
+
+getIpInfos();
+
+input.addEventListener("submit", event => {
+    event.preventDefault()
+    getIpInfos(event.target[0].value);
+    event.target[0].value = "";
+});

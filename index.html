@@ -27,9 +27,9 @@
   <header>
     <p>IP Address Tracker</p>
 
-    <form>
+    <form class="search-form">
       <input type="text" class="text-input" id="text-input" placeholder="Search for any IP address or domain">
-      <button>
+      <button type="submit" name="submit">
         <img src="images/icon-arrow.svg" alt="">
       </button>
     </form>
@@ -40,25 +40,25 @@
   <div class="detail-container">
     <div class="detail">
       <p class="detail-title">IP Address</p>
-      <p class="detail-description">192.212.174.101</p>
+      <div class="detail-description" id="ip-address"></div>
     </div>
     <div class="detail">
       <p class="detail-title">Location</p>
-      <p class="detail-description">Brooklyn, NY 10001</p>
+      <div class="detail-description" id="location"></div>
     </div>
     <div class="detail">
       <p class="detail-title">Timezone</p>
-      <p class="detail-description">UTC -5:00</p><!-- add offset value dynamically using the API -->
+      <div class="detail-description" id="timezone"></div>
     </div>
     <div class="detail">
       <p class="detail-title">ISP</p>
-      <p class="detail-description">SpaceX Starlink</p>
+      <div class="detail-description" id="isp"></div>
     </div>
   </div>
   
 
   <div class="map-container">
-    <div id="mapid"></div>
+    <div id="map"></div>
   </div>
   
   <div class="attribution">
